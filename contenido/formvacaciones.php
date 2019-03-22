@@ -1,4 +1,7 @@
-<?php include('../lib/constantes.php') ?>
+<?php
+include ("../lib/vacaciones.php");
+include('../lib/constantes.php')
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -16,29 +19,56 @@ and open the template in the editor.
 
     </head>
     <body>
-        
+
         <div id="contenedor">
             <div id="titulo"></div>
-            <div id="menu"><?php include('../menu.php');?></div>
-                    <div id="contenido">
-                        <form action="../lib/recepcionvacaciones.php" method="post">
-                            Rut: <input id="rut" name="rut" type="text">
-                            <br>Nombre: <input id="nombre" name="nombre" type="text">
-                            <br>Cargo: <input id="cargo" name="cargo" type="text">
-                            <br>Fecha de inicio:<input id="fechaini" name="fechaini" type="text">
-                            <br>Días totales:<input id="diastotales" name="diastotales" type="text">
-                            <br>Comentario<textarea id="comentario" name="comentario" rows="7" cols=20>   </textarea>
-                            <input type="submit" value="Enviar"  >                     
-                        </form>
-                    </div>
+            <div id="menu"><?php include('../menu.php'); ?></div>
+            <div id="contenido">
+                <form action="../lib/recepcionvacaciones.php" method="post">
+                    Rut: <input id="rut" name="rut" type="text">
+                    <br>Nombre: <input id="nombre" name="nombre" type="text">
+                    <br>Cargo: <input id="cargo" name="cargo" type="text">
+                    <br>Fecha de inicio:<input id="fechaini" name="fechaini" type="text">
+                    <br>Días totales:<input id="diastotales" name="diastotales" type="text">
+                    <br>Comentario<textarea id="comentario" name="comentario" rows="7" cols=20>   </textarea>
+                    <input type="submit" value="Enviar"  >                     
+                </form>
+                Tradicional
+                <form action="../lib/eliminarrecepcion.php" method="post">
+
+                    Rut: <input id="rut_e" name="rut_e" type="text">
+                    <br><input type="submit" value="Eliminar"  >                     
+                </form>
+
+                Asincronico
+                <form>
+
+                    Rut: <input id="rut_easinc" name="rut_easinc" type="text">
+                    <input id="eliminarasinc" type="button" value="Eliminar"  >                     
+                </form>
+            </div>
+
         </div>
+
+
         <?php
-         if (isset($_SESSION["hm"])) echo $_SESSION["hm"];
-         ?>
+        if (isset($_SESSION["hm"]))
+            echo $_SESSION["hm"];
+
+        echo "<pre>";
+        var_dump($_SESSION["aVacaciones"]);
+        echo "</pre>";
+        ?>
+
+
     </body>
     <script>
         $("#subvacaciones").show();
-        $("#subvacaciones").css("display","block");
+        $("#subvacaciones").css("display", "block");
         $("#subvacaciones").addClass("active");
+        $("#eliminarasinc").click(function () {
+            $.post("../lib/eliminarrecepcion.php", {rut_e:$("#rut_easinc").val()});
+
+        });
     </script>
 </html>

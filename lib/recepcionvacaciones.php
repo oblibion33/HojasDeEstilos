@@ -1,6 +1,7 @@
 <?php
-include ("constantes.php");
 include ("vacaciones.php");
+include ("constantes.php");
+
 
 echo "<pre>";
 var_dump($_POST);
