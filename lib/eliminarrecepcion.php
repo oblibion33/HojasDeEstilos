@@ -10,7 +10,11 @@ $sRut= $_POST["rut_e"];
          if ($oVacacion->getRut()==$sRut) {
              unset($arrVacaciones[$key]);
              $_SESSION["aVacaciones"]=$arrVacaciones;
+             $contador++;
          }
+     }
+     if ($contador>=1) {
+         header("location:".URLBASE."contenido/formlistavacaciones.php");
      }
  } 
  

@@ -34,12 +34,14 @@ and open the template in the editor.
     <script>
         $("#menusolucitudes").click(function(){
             
-            if ($("#subvacaciones").css("display")!="none"){
-                $("#subvacaciones").css("display","none");
+            if ($("[id*=subvacaciones]").css("display")!="none"){
+                $("[id*=subvacaciones]").css("display","none");
             }
             else{
-                $("#subvacaciones").show();
-                $("#subvacaciones").css("display","block");
+                $("[id*=subvacaciones]").show();
+                $("[id*=subvacaciones]").css("display","block");
+                
+                //id*= significa que todos los puntos que tengan el id especificado podran realizar esa funcion
             }
          });
     </script>
